@@ -8,9 +8,10 @@ include 'alt.php';
 $str = '';
 for ($i = $yi; $i >= $yo; $i--) {
     for ($j = $xi; $j <= $xo; $j++) {
-        $h = $alt[$i][$j];
-        $str .= $j.'|[4]|'.$i.'|[3]|'.$h.'|[4]|Pantalassa|[2]|';
-        echo 'Generated ' . $j . ';' . $i . ' (' . $h . ' m)<br>';
+        $setAlt = $alt[$i][$j]['alt'];
+        $setTitle = $alt[$i][$j]['title'];
+        $str .= $j.'|[4]|'.$i.'|[3]|'.$setAlt.'|[4]|'.$setTitle.'|[2]|';
+        echo 'Generated ' . $j . ';' . $i . ' (' . $setAlt . ' m) - ' . $setTitle . '<br>';
     }
     $str = mb_strimwidth($str, 0, -5, strlen($str));
     $str .= '|[1]|';

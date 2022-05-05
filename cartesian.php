@@ -1,5 +1,5 @@
 <?php
-$mapname = ($_REQUEST['name']) ? $_REQUEST['name'] : 'earth.map';
+$mapname = ($_REQUEST['name']) ? $_REQUEST['name'] : 'sample.map';
 $mapfile = file_get_contents($mapname);
 $mapdel = explode('|[1]|', $mapfile);
 ?>

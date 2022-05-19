@@ -15,4 +15,4 @@ if ($subDirect == 0) {
 } elseif ($subDirect == 5) {
     $subZ = $subZ - $subStep;
 }
-echo $sub.' ('.$subRating.') moved to '.$subX.';'.$subY.';'.$subZ.'<br>';
+echo $sub.' ('.$subRating.') moved ('.$subStep.') to ('.$subX.';'.$subY.';'.$subZ.')<br>';

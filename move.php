@@ -1,7 +1,6 @@
 <?php
-$subStepArr = [2, 4, 8, 12, 24, 48];
-$subStepVelo = $subStepArr[rand(0, 5)];
-$subStep = round(($subRating / $subStepVelo), 0) + 2;
+$subStepVelo = rand(1, 50) * 2;
+$subStep = round(($subRating / $subStepVelo), 0) + 1;
 $subDirect = rand(0, 5);
 if ($subDirect == 0) {
     $subX = $subX + $subStep;

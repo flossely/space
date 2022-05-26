@@ -4,11 +4,7 @@ if ($objRating >= 0) {
         $objRating = $objRating - $subForce;
         $subRating = $subRating + $subForce;
         echo $sub.' ('.$subRating.') harmed ('.$subForce.') '.$obj.' ('.$objRating.')<br>';
-    } elseif (($subMode > 0 && $objMode > 0) || ($subMode < 0 && $objMode < 0)) {
-        $objRating = $objRating + $subForce;
-        $subRating = $subRating - $subForce;
-        echo $sub.' ('.$subRating.') healed ('.$subForce.') '.$obj.' ('.$objRating.')<br>';
-    } elseif (($subMode > 0 && $objMode == 0) || ($subMode < 0 && $objMode == 0) || ($subMode == 0 && $objMode > 0) || ($subMode == 0 && $objMode < 0)) {
+    } elseif (($subMode > 0 && $objMode > 0) || ($subMode < 0 && $objMode < 0) || ($subMode > 0 && $objMode == 0) || ($subMode < 0 && $objMode == 0) || ($subMode == 0 && $objMode > 0) || ($subMode == 0 && $objMode < 0)) {
         $objRating = $objRating + $subForce;
         $subRating = $subRating - $subForce;
         echo $sub.' ('.$subRating.') healed ('.$subForce.') '.$obj.' ('.$objRating.')<br>';

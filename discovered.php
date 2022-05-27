@@ -14,3 +14,5 @@ if ($objRating >= 0) {
     $sayRand = rand(0,2);
     echo $sub.' to '.$obj.': '.$sayDead[$subMode][$objMode][$sayRand].'<br>';
 }
+include 'autosubsave.php';
+include 'autoobjsave.php';

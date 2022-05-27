@@ -12,5 +12,3 @@ if ($objRating >= 0) {
 } elseif ($objRating < 0) {
     include 'move.php';
 }
-include 'autosubsave.php';
-include 'autoobjsave.php';

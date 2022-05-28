@@ -68,7 +68,7 @@ if ($sub == $obj) {
 	} elseif ($subDirect == 5) {
             $subZ = $subZ - $subForce;
 	}
-	echo $sub.' ('.$subRating.') moved ('.$subStep.') to ('.$subX.';'.$subY.';'.$subZ.')<br>';
+	echo $sub.' ('.$subRating.') moved ('.$subForce.') to ('.$subX.';'.$subY.';'.$subZ.')<br>';
 	
     } elseif ($subRating < 0) {
         echo $sub.' ('.$subRating.') is dead<br>';
@@ -126,7 +126,7 @@ if ($sub == $obj) {
 	        } elseif ($subDirect == 5) {
                     $subZ = $subZ - $subForce;
 	        }
-	        echo $sub.' ('.$subRating.') moved ('.$subStep.') to ('.$subX.';'.$subY.';'.$subZ.')<br>';
+	        echo $sub.' ('.$subRating.') moved ('.$subForce.') to ('.$subX.';'.$subY.';'.$subZ.')<br>';
     		
 	    }
             
@@ -146,7 +146,7 @@ if ($sub == $obj) {
 	    } elseif ($subDirect == 5) {
                 $subZ = $subZ - $subForce;
 	    }
-	    echo $sub.' ('.$subRating.') moved ('.$subStep.') to ('.$subX.';'.$subY.';'.$subZ.')<br>';
+	    echo $sub.' ('.$subRating.') moved ('.$subForce.') to ('.$subX.';'.$subY.';'.$subZ.')<br>';
             
         }
     } elseif ($subRating < 0) {

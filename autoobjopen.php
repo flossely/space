@@ -3,6 +3,7 @@ $objRating = file_get_contents($obj.'/rating');
 $objMode = file_get_contents($obj.'/mode');
 $objCoord = file_get_contents($obj.'/coord');
 $objCoordDiv = explode(';', $objCoord);
+
 if (is_numeric($objCoordDiv[0])) {
     $objX = $objCoordDiv[0];
 } else {

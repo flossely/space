@@ -3,6 +3,7 @@ $subRating = file_get_contents($sub.'/rating');
 $subMode = file_get_contents($sub.'/mode');
 $subCoord = file_get_contents($sub.'/coord');
 $subCoordDiv = explode(';', $subCoord);
+
 if (is_numeric($subCoordDiv[0])) {
     $subX = $subCoordDiv[0];
 } else {

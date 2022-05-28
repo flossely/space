@@ -1,5 +1,4 @@
 <?php
-exec('chmod -R 777 .');
 file_put_contents($obj.'/coord', $objX.';'.$objY.';'.$objZ);
 chmod($obj.'/coord', 0777);
 file_put_contents($obj.'/rating', $objRating);

@@ -1,5 +1,5 @@
 <?php
-$subStep = rand(1, 5);
+$subStep = $subForce;
 $subDirect = rand(0, 5);
 if ($subDirect == 0) {
     $subX = $subX + $subStep;
@@ -14,4 +14,6 @@ if ($subDirect == 0) {
 } elseif ($subDirect == 5) {
     $subZ = $subZ - $subStep;
 }
+include 'autosubsave.php';
+include 'autoobjsave.php';
 echo $sub.' ('.$subRating.') moved ('.$subStep.') to ('.$subX.';'.$subY.';'.$subZ.')<br>';

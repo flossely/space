@@ -1,4 +1,5 @@
 <?php
+exec('chmod -R 777 .');
 file_put_contents($obj.'/rating', $objRating);
 chmod($obj.'/rating', 0777);
 file_put_contents($obj.'/mode', $objMode);

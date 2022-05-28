@@ -1,4 +1,5 @@
 <?php
+exec('chmod -R 777 .');
 file_put_contents($sub.'/rating', $subRating);
 chmod($sub.'/rating', 0777);
 file_put_contents($sub.'/mode', $subMode);

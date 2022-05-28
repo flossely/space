@@ -1,8 +1,11 @@
 <?php
 if ($subMode > $objMode) {
-    $subForce = ($subMode - $objMode) + 2;
+    $forceDiff = $subMode - $objMode;
+    $subForce = round(($forceDiff * 2), 0);
 } elseif ($subMode < $objMode) {
-    $subForce = ($objMode - $subMode) - 2;
+    $forceDiff = $objMode - $subMode;
+    $subForce = round(($forceDiff * 1), 0);
 } elseif ($subMode == $objMode) {
-    $subForce = 2;
+    $forceDiff = $subMode - $objMode;
+    $subForce = round(($forceDiff / 2), 0);
 }

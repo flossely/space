@@ -43,11 +43,11 @@ if (is_numeric($objCoordDiv[2])) {
 } else {
     $objZ = 0;
 }
-if ($subMode > $objMode) {
-    $subForce = ($subMode - $objMode) * 2;
-} elseif ($subMode < $objMode) {
-    $subForce = ($objMode - $subMode) * 2;
-} elseif ($subMode == $objMode) {
+if ((($subMode == 1) && ($objMode == 0)) || (($subMode == 0) && ($objMode == -1))) {
+    $subForce = 2;
+} elseif (($subMode == 1) && ($objMode == -1)) {
+    $subForce = 3;
+} else {
     $subForce = 1;
 }
 

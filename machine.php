@@ -68,6 +68,20 @@ if ($sub == $obj) {
 	} elseif ($subDirect == 5) {
             $subZ = $subZ - $subForce;
 	}
+	
+	file_put_contents($sub.'/coord', $subX.';'.$subY.';'.$subZ);
+	chmod($sub.'/coord', 0777);
+	file_put_contents($sub.'/rating', $subRating);
+	chmod($sub.'/rating', 0777);
+	file_put_contents($sub.'/mode', $subMode);
+	chmod($sub.'/mode', 0777);
+	file_put_contents($obj.'/coord', $objX.';'.$objY.';'.$objZ);
+	chmod($obj.'/coord', 0777);
+	file_put_contents($obj.'/rating', $objRating);
+	chmod($obj.'/rating', 0777);
+	file_put_contents($obj.'/mode', $objMode);
+	chmod($obj.'/mode', 0777);
+	
 	echo $sub.' ('.$subRating.') moved ('.$subForce.') to ('.$subX.';'.$subY.';'.$subZ.')<br>';
 	
     } elseif ($subRating < 0) {
@@ -81,21 +95,21 @@ if ($sub == $obj) {
         } elseif ($subX < $objX) {
             $distX = $objX - $subX;
 	} elseif ($subX == $objX) {
-            $distX = 0;
+            $distX = 1;
 	}
 	if ($subY > $objY) {
             $distY = $subY - $objY;
 	} elseif ($subY < $objY) {
             $distY = $objY - $subY;
 	} elseif ($subY == $objY) {
-            $distY = 0;
+            $distY = 1;
 	}
 	if ($subZ > $objZ) {
             $distZ = $subZ - $objZ;
 	} elseif ($subZ < $objZ) {
             $distZ = $objZ - $subZ;
 	} elseif ($subZ == $objZ) {
-    	    $distZ = 0;
+    	    $distZ = 1;
 	}
         
         if (($distX <= $subForce) && ($distY <= $subForce) && ($distZ <= $subForce)) {
@@ -110,6 +124,20 @@ if ($sub == $obj) {
         	    $subRating = $subRating - $subForce;
         	    echo $sub.' ('.$subRating.') healed ('.$subForce.') '.$obj.' ('.$objRating.')<br>';
     		}
+    		
+    		file_put_contents($sub.'/coord', $subX.';'.$subY.';'.$subZ);
+	    	chmod($sub.'/coord', 0777);
+	    	file_put_contents($sub.'/rating', $subRating);
+	    	chmod($sub.'/rating', 0777);
+	    	file_put_contents($sub.'/mode', $subMode);
+	    	chmod($sub.'/mode', 0777);
+	    	file_put_contents($obj.'/coord', $objX.';'.$objY.';'.$objZ);
+	    	chmod($obj.'/coord', 0777);
+	    	file_put_contents($obj.'/rating', $objRating);
+	    	chmod($obj.'/rating', 0777);
+	    	file_put_contents($obj.'/mode', $objMode);
+	    	chmod($obj.'/mode', 0777);
+	    	
 	    } elseif ($objRating < 0) {
     		
     		$subDirect = rand(0, 5);
@@ -126,7 +154,21 @@ if ($sub == $obj) {
 	        } elseif ($subDirect == 5) {
                     $subZ = $subZ - $subForce;
 	        }
-	        echo $sub.' ('.$subRating.') moved ('.$subForce.') to ('.$subX.';'.$subY.';'.$subZ.')<br>';
+	        
+	        file_put_contents($sub.'/coord', $subX.';'.$subY.';'.$subZ);
+	    	chmod($sub.'/coord', 0777);
+	    	file_put_contents($sub.'/rating', $subRating);
+	    	chmod($sub.'/rating', 0777);
+	    	file_put_contents($sub.'/mode', $subMode);
+	    	chmod($sub.'/mode', 0777);
+	    	file_put_contents($obj.'/coord', $objX.';'.$objY.';'.$objZ);
+	    	chmod($obj.'/coord', 0777);
+	    	file_put_contents($obj.'/rating', $objRating);
+	    	chmod($obj.'/rating', 0777);
+	    	file_put_contents($obj.'/mode', $objMode);
+	    	chmod($obj.'/mode', 0777);
+	    	
+	    	echo $sub.' ('.$subRating.') moved ('.$subForce.') to ('.$subX.';'.$subY.';'.$subZ.')<br>';
     		
 	    }
             
@@ -146,6 +188,20 @@ if ($sub == $obj) {
 	    } elseif ($subDirect == 5) {
                 $subZ = $subZ - $subForce;
 	    }
+	    
+	    file_put_contents($sub.'/coord', $subX.';'.$subY.';'.$subZ);
+	    chmod($sub.'/coord', 0777);
+	    file_put_contents($sub.'/rating', $subRating);
+	    chmod($sub.'/rating', 0777);
+	    file_put_contents($sub.'/mode', $subMode);
+	    chmod($sub.'/mode', 0777);
+	    file_put_contents($obj.'/coord', $objX.';'.$objY.';'.$objZ);
+	    chmod($obj.'/coord', 0777);
+	    file_put_contents($obj.'/rating', $objRating);
+	    chmod($obj.'/rating', 0777);
+	    file_put_contents($obj.'/mode', $objMode);
+	    chmod($obj.'/mode', 0777);
+	    
 	    echo $sub.' ('.$subRating.') moved ('.$subForce.') to ('.$subX.';'.$subY.';'.$subZ.')<br>';
             
         }

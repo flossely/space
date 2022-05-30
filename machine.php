@@ -1,4 +1,5 @@
 <?php
+echo $last;
 $subRand = rand(0,$last);
 $subID = $subRand;
 $sub = $list[$subRand];

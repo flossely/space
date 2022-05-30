@@ -51,9 +51,9 @@ if ($subRating <= 0) {
 
 if ($sub == $obj) {
     if ($subRating >= 0) {
-        echo '@'.$sub.'('.$subRating.'){'.$subX.';'.$subY.';'.$subZ.'}<br>';
+        echo '@'.$sub.'('.$subRating.'){'.$subX.';'.$subY.';'.$subZ.'} = @'.$obj.'('.$objRating.'){'.$objX.';'.$objY.';'.$objZ.'}<br>';
     } elseif ($subRating < 0) {
-        echo '@'.$sub.'('.$subRating.')<br>';
+        echo '@'.$sub.'('.$subRating.') = @'.$obj.'('.$objRating.')<br>';
     }
 } elseif ($sub != $obj) {
     if ($subRating >= 0) {

@@ -43,12 +43,10 @@ if (is_numeric($objCoordDiv[2])) {
 } else {
     $objZ = 0;
 }
-if ((($subMode == 1) && ($objMode == 0)) || (($subMode == 0) && ($objMode == -1))) {
-    $subForce = 2;
-} elseif (($subMode == 1) && ($objMode == -1)) {
-    $subForce = 3;
-} else {
+if ($subRating <= 0) {
     $subForce = 1;
+} else {
+    $subForce = $subRating;
 }
 
 if ($sub == $obj) {

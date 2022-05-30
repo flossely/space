@@ -1,5 +1,4 @@
 <?php
-echo $last;
 $subRand = rand(0,$last);
 $subID = $subRand;
 $sub = $list[$subRand];
@@ -70,19 +69,6 @@ if ($sub == $obj) {
             $subZ = $subZ - $subForce;
 	}
 	
-	file_put_contents($sub.'/coord', $subX.';'.$subY.';'.$subZ);
-	chmod($sub.'/coord', 0777);
-	file_put_contents($sub.'/rating', $subRating);
-	chmod($sub.'/rating', 0777);
-	file_put_contents($sub.'/mode', $subMode);
-	chmod($sub.'/mode', 0777);
-	file_put_contents($obj.'/coord', $objX.';'.$objY.';'.$objZ);
-	chmod($obj.'/coord', 0777);
-	file_put_contents($obj.'/rating', $objRating);
-	chmod($obj.'/rating', 0777);
-	file_put_contents($obj.'/mode', $objMode);
-	chmod($obj.'/mode', 0777);
-	
 	echo $sub.' ('.$subRating.') moved ('.$subForce.') to ('.$subX.';'.$subY.';'.$subZ.')<br>';
 	
     } elseif ($subRating < 0) {
@@ -96,21 +82,21 @@ if ($sub == $obj) {
         } elseif ($subX < $objX) {
             $distX = $objX - $subX;
 	} elseif ($subX == $objX) {
-            $distX = 1;
+            $distX = 0;
 	}
 	if ($subY > $objY) {
             $distY = $subY - $objY;
 	} elseif ($subY < $objY) {
             $distY = $objY - $subY;
 	} elseif ($subY == $objY) {
-            $distY = 1;
+            $distY = 0;
 	}
 	if ($subZ > $objZ) {
             $distZ = $subZ - $objZ;
 	} elseif ($subZ < $objZ) {
             $distZ = $objZ - $subZ;
 	} elseif ($subZ == $objZ) {
-    	    $distZ = 1;
+    	    $distZ = 0;
 	}
         
         if (($distX <= $subForce) && ($distY <= $subForce) && ($distZ <= $subForce)) {

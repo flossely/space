@@ -53,9 +53,9 @@ if ((($subMode == 1) && ($objMode == 0)) || (($subMode == 0) && ($objMode == -1)
 
 if ($sub == $obj) {
     if ($subRating >= 0) {
-        echo $sub.' ('.$subRating.') ('.$subX.';'.$subY.';'.$subZ.')<br>';
+        echo '@'.$sub.'('.$subRating.'){'.$subX.';'.$subY.';'.$subZ.'}<br>';
     } elseif ($subRating < 0) {
-        echo $sub.' ('.$subRating.')<br>';
+        echo '@'.$sub.'('.$subRating.')<br>';
     }
 } elseif ($sub != $obj) {
     if ($subRating >= 0) {
@@ -85,11 +85,11 @@ if ($sub == $obj) {
 	        if (($subMode == 0 && $objMode == 0) || ($subMode > 0 && $objMode < 0) || ($subMode < 0 && $objMode > 0)) {
         	    $objRating = $objRating - $subForce;
         	    $subRating = $subRating + $subForce;
-        	    echo $sub.' ('.$subRating.') - ('.$subForce.') = '.$obj.' ('.$objRating.')<br>';
+        	    echo '@'.$sub.'('.$subRating.') - @'.$obj.'('.$objRating.')<br>';
     		} elseif (($subMode > 0 && $objMode > 0) || ($subMode < 0 && $objMode < 0) || ($subMode > 0 && $objMode == 0) || ($subMode < 0 && $objMode == 0) || ($subMode == 0 && $objMode > 0) || ($subMode == 0 && $objMode < 0)) {
         	    $objRating = $objRating + $subForce;
         	    $subRating = $subRating - $subForce;
-        	    echo $sub.' ('.$subRating.') + ('.$subForce.') = '.$obj.' ('.$objRating.')<br>';
+        	    echo '@'.$sub.'('.$subRating.') + @'.$obj.'('.$objRating.')<br>';
     		}
 	    } else {
 	        $subDirect = rand(0, 5);
@@ -106,7 +106,7 @@ if ($sub == $obj) {
 		} elseif ($subDirect == 5) {
             	    $subZ = $subZ - $subForce;
 		}
-		echo $sub.' ('.$subRating.') * ('.$subForce.') = ('.$subX.';'.$subY.';'.$subZ.')<br>';
+		echo '@'.$sub.'('.$subRating.'){'.$subX.';'.$subY.';'.$subZ.'}<br>';
 	    }
         } elseif ($objRating < 0) {
 	    $subDirect = rand(0, 5);
@@ -123,10 +123,10 @@ if ($sub == $obj) {
 	    } elseif ($subDirect == 5) {
             	$subZ = $subZ - $subForce;
             }
-	    echo $sub.' ('.$subRating.') * ('.$subForce.') = ('.$subX.';'.$subY.';'.$subZ.')<br>';
+	    echo '@'.$sub.'('.$subRating.'){'.$subX.';'.$subY.';'.$subZ.'}<br>';
         }
     } elseif ($subRating < 0) {
-        echo $sub.' ('.$subRating.')<br>';
+        echo '@'.$sub.'('.$subRating.')<br>';
     }
 }
 

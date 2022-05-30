@@ -53,21 +53,7 @@ if ((($subMode == 1) && ($objMode == 0)) || (($subMode == 0) && ($objMode == -1)
 
 if ($sub == $obj) {
     if ($subRating >= 0) {
-        $subDirect = rand(0, 5);
-	if ($subDirect == 0) {
-    	    $subX = $subX + $subForce;
-	} elseif ($subDirect == 1) {
-    	    $subX = $subX - $subForce;
-        } elseif ($subDirect == 2) {
-            $subY = $subY + $subForce;
-        } elseif ($subDirect == 3) {
-            $subY = $subY - $subForce;
-        } elseif ($subDirect == 4) {
-            $subZ = $subZ + $subForce;
-	} elseif ($subDirect == 5) {
-            $subZ = $subZ - $subForce;
-	}
-	echo $sub.' ('.$subRating.') moved ('.$subForce.') to ('.$subX.';'.$subY.';'.$subZ.')<br>';
+        echo $sub.' ('.$subRating.') ('.$subX.';'.$subY.';'.$subZ.')<br>';
     } elseif ($subRating < 0) {
         echo $sub.' ('.$subRating.')<br>';
     }
@@ -99,17 +85,45 @@ if ($sub == $obj) {
 	        if (($subMode == 0 && $objMode == 0) || ($subMode > 0 && $objMode < 0) || ($subMode < 0 && $objMode > 0)) {
         	    $objRating = $objRating - $subForce;
         	    $subRating = $subRating + $subForce;
-        	    echo $sub.' ('.$subRating.') harmed ('.$subForce.') '.$obj.' ('.$objRating.')<br>';
+        	    echo $sub.' ('.$subRating.') - ('.$subForce.') = '.$obj.' ('.$objRating.')<br>';
     		} elseif (($subMode > 0 && $objMode > 0) || ($subMode < 0 && $objMode < 0) || ($subMode > 0 && $objMode == 0) || ($subMode < 0 && $objMode == 0) || ($subMode == 0 && $objMode > 0) || ($subMode == 0 && $objMode < 0)) {
         	    $objRating = $objRating + $subForce;
         	    $subRating = $subRating - $subForce;
-        	    echo $sub.' ('.$subRating.') healed ('.$subForce.') '.$obj.' ('.$objRating.')<br>';
+        	    echo $sub.' ('.$subRating.') + ('.$subForce.') = '.$obj.' ('.$objRating.')<br>';
     		}
-	    } elseif (($distX > $subForce) && ($distY > $subForce) && ($distZ > $subForce)) {
-	        echo $sub.' ('.$subRating.') ('.$subX.';'.$subY.';'.$subZ.')<br>';
+	    } else {
+	        $subDirect = rand(0, 5);
+		if ($subDirect == 0) {
+    	    	    $subX = $subX + $subForce;
+		} elseif ($subDirect == 1) {
+    	    	    $subX = $subX - $subForce;
+        	} elseif ($subDirect == 2) {
+            	    $subY = $subY + $subForce;
+        	} elseif ($subDirect == 3) {
+            	    $subY = $subY - $subForce;
+        	} elseif ($subDirect == 4) {
+            	    $subZ = $subZ + $subForce;
+		} elseif ($subDirect == 5) {
+            	    $subZ = $subZ - $subForce;
+		}
+		echo $sub.' ('.$subRating.') * ('.$subForce.') = ('.$subX.';'.$subY.';'.$subZ.')<br>';
 	    }
         } elseif ($objRating < 0) {
-	    echo $sub.' ('.$subRating.') ('.$subX.';'.$subY.';'.$subZ.')<br>';
+	    $subDirect = rand(0, 5);
+	    if ($subDirect == 0) {
+    	    	$subX = $subX + $subForce;
+            } elseif ($subDirect == 1) {
+    	    	$subX = $subX - $subForce;
+            } elseif ($subDirect == 2) {
+            	$subY = $subY + $subForce;
+            } elseif ($subDirect == 3) {
+            	$subY = $subY - $subForce;
+            } elseif ($subDirect == 4) {
+            	$subZ = $subZ + $subForce;
+	    } elseif ($subDirect == 5) {
+            	$subZ = $subZ - $subForce;
+            }
+	    echo $sub.' ('.$subRating.') * ('.$subForce.') = ('.$subX.';'.$subY.';'.$subZ.')<br>';
         }
     } elseif ($subRating < 0) {
         echo $sub.' ('.$subRating.')<br>';

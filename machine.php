@@ -1,8 +1,8 @@
 <?php
 
-/*function numgen($min,$max) {
-    return rand($min,$max);
-}*/
+function velo($f) {
+    return $f;
+}
 
 function alive($r) {
     return ($r >= 0);
@@ -222,7 +222,7 @@ if ($sub == $obj) {
     		}
 	    } else {
 	        $subDirect = rand(0, 5);
-	        $subMove = rand(0, $subForce);
+	        $subMove = velo($subForce);
 		if ($subDirect == 0) {
     	    	    $subX = $subX + $subMove;
     	    	    echo '@'.$sub.' '.$navi[$lingua]['right'].' ('.$subMove.')<br>';
@@ -245,7 +245,7 @@ if ($sub == $obj) {
 	    }
         } elseif ($objRating < 0) {
 	    $subDirect = rand(0, 5);
-	    $subMove = numgen(0, $subForce);
+	    $subMove = velo($subForce);
 	    if ($subDirect == 0) {
     	        $subX = $subX + $subMove;
     	    	echo '@'.$sub.' '.$navi[$lingua]['right'].' ('.$subMove.')<br>';

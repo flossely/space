@@ -4,6 +4,10 @@ function velo($f) {
     return $f;
 }
 
+function self($s,$o) {
+    return ($s == $o);
+}
+
 function alive($r) {
     return ($r >= 0);
 }
@@ -169,17 +173,17 @@ if (is_numeric($objCoordDiv[2])) {
 } else {
     $objZ = 0;
 }
-if ($subRating <= 0) {
-    $subForce = 1;
-} else {
+if (valuable($subRating)) {
     $subForce = $subRating;
+} else {
+    $subForce = 1;
 }
 
-if ($sub == $obj) {
+if (self($sub,$obj)) {
     echo '@'.$sub.' ('.$subRating.') '.$navi[$lingua]['standby'].'<br>';
-} elseif ($sub != $obj) {
-    if ($subRating >= 0) {
-        if ($objRating >= 0) {
+} else {
+    if (alive($subRating)) {
+        if (alive($objRating)) {
 	    if (reach($subX,$subY,$subZ,$objX,$objY,$objZ,$subForce)) {
 	        if (relate($subMode, $objMode) == 'foe') {
 	            $subAction = rand(0, 2);
@@ -243,7 +247,7 @@ if ($sub == $obj) {
             	    echo '@'.$sub.' '.$navi[$lingua]['down'].' ('.$subMove.')<br>';
 		}
 	    }
-        } elseif ($objRating < 0) {
+        } elseif (dead($objRating)) {
 	    $subDirect = rand(0, 5);
 	    $subMove = velo($subForce);
 	    if ($subDirect == 0) {
@@ -266,7 +270,7 @@ if ($sub == $obj) {
             	echo '@'.$sub.' '.$navi[$lingua]['down'].' ('.$subMove.')<br>';
 	    }
         }
-    } elseif ($subRating < 0) {
+    } elseif (dead($subRating)) {
         echo '@'.$sub.' ('.$subRating.') '.$navi[$lingua]['dead'].'<br>';
     }
 }

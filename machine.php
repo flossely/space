@@ -1,8 +1,8 @@
 <?php
 
-function numgen($min,$max) {
-    return ($min+lcg_value()*(abs($max-$min)));
-}
+/*function numgen($min,$max) {
+    return rand($min,$max);
+}*/
 
 function alive($r) {
     return ($r >= 0);
@@ -222,7 +222,7 @@ if ($sub == $obj) {
     		}
 	    } else {
 	        $subDirect = rand(0, 5);
-	        $subMove = numgen(0, $subForce);
+	        $subMove = rand(0, $subForce);
 		if ($subDirect == 0) {
     	    	    $subX = $subX + $subMove;
     	    	    echo '@'.$sub.' '.$navi[$lingua]['right'].' ('.$subMove.')<br>';

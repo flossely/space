@@ -12,16 +12,8 @@ function alive($r) {
     return ($r >= 0);
 }
 
-function dead($r) {
-    return ($r < 0);
-}
-
 function valuable($r) {
     return ($r > 0);
-}
-
-function invaluable($r) {
-    return ($r <= 0);
 }
 
 function dist($ix,$iy,$iz,$jx,$jy,$jz) {

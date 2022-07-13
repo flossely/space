@@ -1,134 +1,5 @@
 <?php
 
-function velo($f) {
-    return $f;
-}
-
-function self($s,$o) {
-    return ($s == $o);
-}
-
-function alive($r) {
-    return ($r >= 0);
-}
-
-function dead($r) {
-    return ($r < 0);
-}
-
-function valuable($r) {
-    return ($r > 0);
-}
-
-function invaluable($r) {
-    return ($r <= 0);
-}
-
-function dist($ix,$iy,$iz,$jx,$jy,$jz) {
-    if ($ix > $jx) {
-        $dix = $ix - $jx;
-    } elseif ($ix < $jx) {
-        $dix = $jx - $ix;
-    } elseif ($ix == $jx) {
-        $dix = 0;
-    }
-    if ($iy > $jy) {
-        $diy = $iy - $jy;
-    } elseif ($iy < $jy) {
-        $diy = $jy - $iy;
-    } elseif ($iy == $jy) {
-        $diy = 0;
-    }
-    if ($iz > $jz) {
-        $diz = $iz - $jz;
-    } elseif ($iz < $jz) {
-        $diz = $jz - $iz;
-    } elseif ($iz == $jz) {
-        $diz = 0;
-    }
-    
-    return sqrt($dix ** 2 + $diy ** 2 + $diz ** 2);
-}
-
-function reach($ix,$iy,$iz,$jx,$jy,$jz,$f) {
-    if ($ix > $jx) {
-        $dix = $ix - $jx;
-    } elseif ($ix < $jx) {
-        $dix = $jx - $ix;
-    } elseif ($ix == $jx) {
-        $dix = 0;
-    }
-    if ($iy > $jy) {
-        $diy = $iy - $jy;
-    } elseif ($iy < $jy) {
-        $diy = $jy - $iy;
-    } elseif ($iy == $jy) {
-        $diy = 0;
-    }
-    if ($iz > $jz) {
-        $diz = $iz - $jz;
-    } elseif ($iz < $jz) {
-        $diz = $jz - $iz;
-    } elseif ($iz == $jz) {
-        $diz = 0;
-    }
-    
-    return (($dix <= $f) && ($diy <= $f) && ($diz <= $f));
-}
-
-function relate($sm, $om) {
-    if (($sm == 0 && $om == 0) || ($sm > 0 && $om < 0) || ($sm < 0 && $om > 0)) {
-        $status = 'foe';
-    } elseif (($subMode > 0 && $objMode > 0) || ($subMode < 0 && $objMode < 0) || ($subMode > 0 && $objMode == 0) || ($subMode < 0 && $objMode == 0) || ($subMode == 0 && $objMode > 0) || ($subMode == 0 && $objMode < 0)) {
-        $status = 'friend';
-    }
-    
-    return $status;
-}
-
-if (file_exists("locale")) {
-    $localeOpen = file_get_contents("locale");
-    $locale = ($localeOpen != "") ? $localeOpen : "en";
-} else {
-    $locale = "en";
-}
-
-$lingua = $locale;
-
-$navi =
-[
-    'en' =>
-    [
-        'back' => 'back',
-        'dead' => 'dead',
-        'down' => 'down',
-        'forward' => 'forward',
-        'heal' => 'heal',
-        'hit' => 'hit',
-        'left' => 'left',
-        'right' => 'right',
-        'standby' => 'stand by',
-        'strike' => 'strike',
-        'tract' => 'traced',
-        'up' => 'up',
-    ],
-    'la' =>
-    [
-        'back' => 'ad tergum',
-        'dead' => 'mortuus',
-        'down' => 'ad deorsum',
-        'forward' => 'ad deinceps',
-        'heal' => 'sano',
-        'hit' => 'ferio',
-        'left' => 'ad sinistram',
-        'right' => 'ad dextram',
-        'standby' => 'adsistit',
-        'strike' => 'pulso',
-        'tract' => 'vestigo',
-        'up' => 'ad sursum',
-    ],
-];
-
 $subRand = rand(0,$last);
 $subID = $subRand;
 $sub = $list[$subRand];
@@ -180,7 +51,7 @@ if (valuable($subRating)) {
 }
 
 if (self($sub,$obj)) {
-    echo '@'.$sub.' ('.$subRating.') '.$navi[$lingua]['standby'].'<br>';
+    echo '@'.$sub.' ('.$subRating.') '.$spacedictus[$lingua]['standby'].'<br>';
 } else {
     if (alive($subRating)) {
         if (alive($objRating)) {
@@ -191,18 +62,18 @@ if (self($sub,$obj)) {
         	        $subX = $objX;
         	        $subY = $objY;
         	        $subZ = $objZ;
-        	        echo '@'.$sub.' '.$navi[$lingua]['tract'].' ('.dist($subX,$subY,$subZ,$objX,$objY,$objZ).' @'.$obj.'<br>';
+        	        echo '@'.$sub.' '.$spacedictus[$lingua]['tract'].' ('.dist($subX,$subY,$subZ,$objX,$objY,$objZ).') @'.$obj.'<br>';
 	            } elseif ($subAction == 1) {
 	                $subX = $objX;
         	        $subY = $objY;
         	        $subZ = $objZ;
 	                $objRating -= $subForce;
         	        $subRating += $subForce;
-        	        echo '@'.$sub.' ('.$subRating.') '.$navi[$lingua]['hit'].' ('.$subForce.') @'.$obj.' ('.$objRating.')<br>';
+        	        echo '@'.$sub.' ('.$subRating.') '.$spacedictus[$lingua]['hit'].' ('.$subForce.') @'.$obj.' ('.$objRating.')<br>';
         	    } elseif ($subAction == 2) {
 	                $objRating -= $subForce;
         	        $subRating += $subForce;
-        	        echo '@'.$sub.' ('.$subRating.') '.$navi[$lingua]['strike'].' ('.$subForce.') @'.$obj.' ('.$objRating.')<br>';
+        	        echo '@'.$sub.' ('.$subRating.') '.$spacedictus[$lingua]['strike'].' ('.$subForce.') @'.$obj.' ('.$objRating.')<br>';
 	            }
     		} elseif (relate($subMode, $objMode) == 'friend') {
     		    $subAction = rand(0, 2);
@@ -210,18 +81,18 @@ if (self($sub,$obj)) {
 	                $subX = $objX;
         	        $subY = $objY;
         	        $subZ = $objZ;
-        	        echo '@'.$sub.' '.$navi[$lingua]['tract'].' ('.dist($subX,$subY,$subZ,$objX,$objY,$objZ).' @'.$obj.'<br>';
+        	        echo '@'.$sub.' '.$spacedictus[$lingua]['tract'].' ('.dist($subX,$subY,$subZ,$objX,$objY,$objZ).') @'.$obj.'<br>';
 	            } elseif ($subAction == 1) {
 	                $subX = $objX;
         	        $subY = $objY;
         	        $subZ = $objZ;
 	                $objRating += $subForce;
         	        $subRating -= $subForce;
-        	        echo '@'.$sub.' ('.$subRating.') '.$navi[$lingua]['heal'].' ('.$subForce.') @'.$obj.' ('.$objRating.')<br>';
+        	        echo '@'.$sub.' ('.$subRating.') '.$spacedictus[$lingua]['heal'].' ('.$subForce.') @'.$obj.' ('.$objRating.')<br>';
 	            } elseif ($subAction == 2) {
 	                $objRating += $subForce;
         	        $subRating -= $subForce;
-        	        echo '@'.$sub.' ('.$subRating.') '.$navi[$lingua]['heal'].' ('.$subForce.') @'.$obj.' ('.$objRating.')<br>';
+        	        echo '@'.$sub.' ('.$subRating.') '.$spacedictus[$lingua]['heal'].' ('.$subForce.') @'.$obj.' ('.$objRating.')<br>';
 	            }
     		}
 	    } else {
@@ -229,22 +100,22 @@ if (self($sub,$obj)) {
 	        $subMove = velo($subForce);
 		if ($subDirect == 0) {
     	    	    $subX = $subX + $subMove;
-    	    	    echo '@'.$sub.' '.$navi[$lingua]['right'].' ('.$subMove.')<br>';
+    	    	    echo '@'.$sub.' '.$spacedictus[$lingua]['right'].' ('.$subMove.')<br>';
 		} elseif ($subDirect == 1) {
     	    	    $subX = $subX - $subMove;
-    	    	    echo '@'.$sub.' '.$navi[$lingua]['left'].' ('.$subMove.')<br>';
+    	    	    echo '@'.$sub.' '.$spacedictus[$lingua]['left'].' ('.$subMove.')<br>';
         	} elseif ($subDirect == 2) {
             	    $subY = $subY + $subMove;
-            	    echo '@'.$sub.' '.$navi[$lingua]['forward'].' ('.$subMove.')<br>';
+            	    echo '@'.$sub.' '.$spacedictus[$lingua]['forward'].' ('.$subMove.')<br>';
         	} elseif ($subDirect == 3) {
             	    $subY = $subY - $subMove;
-            	    echo '@'.$sub.' '.$navi[$lingua]['back'].' ('.$subMove.')<br>';
+            	    echo '@'.$sub.' '.$spacedictus[$lingua]['back'].' ('.$subMove.')<br>';
         	} elseif ($subDirect == 4) {
             	    $subZ = $subZ + $subMove;
-            	    echo '@'.$sub.' '.$navi[$lingua]['up'].' ('.$subMove.')<br>';
+            	    echo '@'.$sub.' '.$spacedictus[$lingua]['up'].' ('.$subMove.')<br>';
 		} elseif ($subDirect == 5) {
             	    $subZ = $subZ - $subMove;
-            	    echo '@'.$sub.' '.$navi[$lingua]['down'].' ('.$subMove.')<br>';
+            	    echo '@'.$sub.' '.$spacedictus[$lingua]['down'].' ('.$subMove.')<br>';
 		}
 	    }
         } elseif (dead($objRating)) {
@@ -252,26 +123,26 @@ if (self($sub,$obj)) {
 	    $subMove = velo($subForce);
 	    if ($subDirect == 0) {
     	        $subX = $subX + $subMove;
-    	    	echo '@'.$sub.' '.$navi[$lingua]['right'].' ('.$subMove.')<br>';
+    	    	echo '@'.$sub.' '.$spacedictus[$lingua]['right'].' ('.$subMove.')<br>';
             } elseif ($subDirect == 1) {
     	    	$subX = $subX - $subMove;
-    	    	echo '@'.$sub.' '.$navi[$lingua]['left'].' ('.$subMove.')<br>';
+    	    	echo '@'.$sub.' '.$spacedictus[$lingua]['left'].' ('.$subMove.')<br>';
             } elseif ($subDirect == 2) {
             	$subY = $subY + $subMove;
-            	echo '@'.$sub.' '.$navi[$lingua]['forward'].' ('.$subMove.')<br>';
+            	echo '@'.$sub.' '.$spacedictus[$lingua]['forward'].' ('.$subMove.')<br>';
             } elseif ($subDirect == 3) {
             	$subY = $subY - $subMove;
-            	echo '@'.$sub.' '.$navi[$lingua]['back'].' ('.$subMove.')<br>';
+            	echo '@'.$sub.' '.$spacedictus[$lingua]['back'].' ('.$subMove.')<br>';
             } elseif ($subDirect == 4) {
             	$subZ = $subZ + $subMove;
-            	echo '@'.$sub.' '.$navi[$lingua]['up'].' ('.$subMove.')<br>';
+            	echo '@'.$sub.' '.$spacedictus[$lingua]['up'].' ('.$subMove.')<br>';
 	    } elseif ($subDirect == 5) {
             	$subZ = $subZ - $subMove;
-            	echo '@'.$sub.' '.$navi[$lingua]['down'].' ('.$subMove.')<br>';
+            	echo '@'.$sub.' '.$spacedictus[$lingua]['down'].' ('.$subMove.')<br>';
 	    }
         }
     } elseif (dead($subRating)) {
-        echo '@'.$sub.' ('.$subRating.') '.$navi[$lingua]['dead'].'<br>';
+        echo '@'.$sub.' ('.$subRating.') '.$spacedictus[$lingua]['dead'].'<br>';
     }
 }
 

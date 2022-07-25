@@ -6,6 +6,7 @@ $sub = $list[$subRand];
 $subRating = file_get_contents($sub.'/rating');
 $subMode = file_get_contents($sub.'/mode');
 $subCoord = file_get_contents($sub.'/coord');
+$subScore = file_get_contents($sub.'/score');
 $subCoordDiv = explode(';', $subCoord);
 if (is_numeric($subCoordDiv[0])) {
     $subX = $subCoordDiv[0];
@@ -28,6 +29,7 @@ $obj = $list[$objRand];
 $objRating = file_get_contents($obj.'/rating');
 $objMode = file_get_contents($obj.'/mode');
 $objCoord = file_get_contents($obj.'/coord');
+$objScore = file_get_contents($obj.'/score');
 $objCoordDiv = explode(';', $objCoord);
 if (is_numeric($objCoordDiv[0])) {
     $objX = $objCoordDiv[0];
@@ -66,6 +68,7 @@ if (self($sub,$obj)) {
         	        $subX = $objX;
         	        $subY = $objY;
         	        $subZ = $objZ;
+        	        $subScore += 10;
         	        echo '@'.$sub.'['.$subRating.'] '.$spacedictus[$lingua]['tract'].' ('.dist($subX,$subY,$subZ,$objX,$objY,$objZ).') @'.$obj.'['.$objRating.']<br>';
 	            } elseif ($subAction == 1) {
 	                $subX = $objX;
@@ -73,10 +76,12 @@ if (self($sub,$obj)) {
         	        $subZ = $objZ;
 	                $objRating -= $subForce;
         	        $subRating += $subForce;
+        	        $subScore += 15;
         	        echo '@'.$sub.'['.$subRating.'] '.$spacedictus[$lingua]['hit'].' @'.$obj.'['.$objRating.']<br>';
         	    } elseif ($subAction == 2) {
 	                $objRating -= $subForce;
         	        $subRating += $subForce;
+        	        $subScore += 5;
         	        echo '@'.$sub.'['.$subRating.'] '.$spacedictus[$lingua]['strike'].' @'.$obj.'['.$objRating.']<br>';
 	            }
     		} elseif (relate($subMode, $objMode) == 'friend') {
@@ -85,6 +90,7 @@ if (self($sub,$obj)) {
 	                $subX = $objX;
         	        $subY = $objY;
         	        $subZ = $objZ;
+        	        $subScore += 10;
         	        echo '@'.$sub.'['.$subRating.'] '.$spacedictus[$lingua]['tract'].' ('.dist($subX,$subY,$subZ,$objX,$objY,$objZ).') @'.$obj.'['.$objRating.']<br>';
 	            } elseif ($subAction == 1) {
 	                $subX = $objX;
@@ -92,10 +98,12 @@ if (self($sub,$obj)) {
         	        $subZ = $objZ;
 	                $objRating += $subForce;
         	        $subRating -= $subForce;
+        	        $subScore += 15;
         	        echo '@'.$sub.'['.$subRating.'] '.$spacedictus[$lingua]['heal'].' @'.$obj.'['.$objRating.']<br>';
 	            } elseif ($subAction == 2) {
 	                $objRating += $subForce;
         	        $subRating -= $subForce;
+        	        $subScore += 5;
         	        echo '@'.$sub.'['.$subRating.'] '.$spacedictus[$lingua]['heal'].' @'.$obj.'['.$objRating.']<br>';
 	            }
     		}
@@ -104,21 +112,27 @@ if (self($sub,$obj)) {
 	        $subMove = velo($subForce);
 		if ($subDirect == 0) {
     	    	    $subX = $subX + $subMove;
+    	    	    $subScore += 1;
     	    	    echo '@'.$sub.'['.$subRating.'] '.$spacedictus[$lingua]['right'].' {'.$subX.';'.$subY.';'.$subZ.'}<br>';
 		} elseif ($subDirect == 1) {
     	    	    $subX = $subX - $subMove;
+    	    	    $subScore += 1;
     	    	    echo '@'.$sub.'['.$subRating.'] '.$spacedictus[$lingua]['left'].' {'.$subX.';'.$subY.';'.$subZ.'}<br>';
         	} elseif ($subDirect == 2) {
             	    $subY = $subY + $subMove;
+            	    $subScore += 1;
             	    echo '@'.$sub.'['.$subRating.'] '.$spacedictus[$lingua]['forward'].' {'.$subX.';'.$subY.';'.$subZ.'}<br>';
         	} elseif ($subDirect == 3) {
             	    $subY = $subY - $subMove;
+            	    $subScore += 1;
             	    echo '@'.$sub.'['.$subRating.'] '.$spacedictus[$lingua]['back'].' {'.$subX.';'.$subY.';'.$subZ.'}<br>';
         	} elseif ($subDirect == 4) {
             	    $subZ = $subZ + $subMove;
+            	    $subScore += 1;
             	    echo '@'.$sub.'['.$subRating.'] '.$spacedictus[$lingua]['up'].' {'.$subX.';'.$subY.';'.$subZ.'}<br>';
 		} elseif ($subDirect == 5) {
             	    $subZ = $subZ - $subMove;
+            	    $subScore += 1;
             	    echo '@'.$sub.'['.$subRating.'] '.$spacedictus[$lingua]['down'].' {'.$subX.';'.$subY.';'.$subZ.'}<br>';
 		}
 	    }
@@ -127,21 +141,27 @@ if (self($sub,$obj)) {
 	    $subMove = velo($subForce);
             if ($subDirect == 0) {
     	    	$subX = $subX + $subMove;
+    	    	$subScore += 1;
     	    	echo '@'.$sub.'['.$subRating.'] '.$spacedictus[$lingua]['right'].' {'.$subX.';'.$subY.';'.$subZ.'}<br>';
 	    } elseif ($subDirect == 1) {
     	    	$subX = $subX - $subMove;
+    	    	$subScore += 1;
     	    	echo '@'.$sub.'['.$subRating.'] '.$spacedictus[$lingua]['left'].' {'.$subX.';'.$subY.';'.$subZ.'}<br>';
             } elseif ($subDirect == 2) {
             	$subY = $subY + $subMove;
+            	$subScore += 1;
             	echo '@'.$sub.'['.$subRating.'] '.$spacedictus[$lingua]['forward'].' {'.$subX.';'.$subY.';'.$subZ.'}<br>';
             } elseif ($subDirect == 3) {
             	$subY = $subY - $subMove;
+            	$subScore += 1;
             	echo '@'.$sub.'['.$subRating.'] '.$spacedictus[$lingua]['back'].' {'.$subX.';'.$subY.';'.$subZ.'}<br>';
             } elseif ($subDirect == 4) {
             	$subZ = $subZ + $subMove;
+            	$subScore += 1;
             	echo '@'.$sub.'['.$subRating.'] '.$spacedictus[$lingua]['up'].' {'.$subX.';'.$subY.';'.$subZ.'}<br>';
 	    } elseif ($subDirect == 5) {
             	$subZ = $subZ - $subMove;
+            	$subScore += 1;
             	echo '@'.$sub.'['.$subRating.'] '.$spacedictus[$lingua]['down'].' {'.$subX.';'.$subY.';'.$subZ.'}<br>';
             }
         }
@@ -156,9 +176,13 @@ file_put_contents($sub.'/rating', $subRating);
 chmod($sub.'/rating', 0777);
 file_put_contents($sub.'/mode', $subMode);
 chmod($sub.'/mode', 0777);
+file_put_contents($sub.'/score', $subScore);
+chmod($sub.'/score', 0777);
 file_put_contents($obj.'/coord', $objX.';'.$objY.';'.$objZ);
 chmod($obj.'/coord', 0777);
 file_put_contents($obj.'/rating', $objRating);
 chmod($obj.'/rating', 0777);
 file_put_contents($obj.'/mode', $objMode);
 chmod($obj.'/mode', 0777);
+file_put_contents($obj.'/score', $objScore);
+chmod($obj.'/score', 0777);

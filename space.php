@@ -4,7 +4,7 @@ function velo($f) {
     return $f;
 }
 
-function self($s,$o) {
+function self($s, $o) {
     return ($s == $o);
 }
 
@@ -16,7 +16,7 @@ function valuable($r) {
     return ($r > 0);
 }
 
-function dist($ix,$iy,$iz,$jx,$jy,$jz) {
+function dist($ix, $iy, $iz, $jx, $jy, $jz) {
     if ($ix > $jx) {
         $dix = $ix - $jx;
     } elseif ($ix < $jx) {
@@ -42,7 +42,7 @@ function dist($ix,$iy,$iz,$jx,$jy,$jz) {
     return sqrt($dix ** 2 + $diy ** 2 + $diz ** 2);
 }
 
-function reach($ix,$iy,$iz,$jx,$jy,$jz,$f) {
+function reach($ix, $iy, $iz, $jx, $jy, $jz, $f) {
     if ($ix > $jx) {
         $dix = $ix - $jx;
     } elseif ($ix < $jx) {

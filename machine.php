@@ -66,11 +66,9 @@ if (valuable($subRating)) {
 
 if (self($sub,$obj)) {
     if (alive($subRating)) {
-        $subAge += 1;
         echo yearconv($today).' : @'.$sub.'['.$subRating.'] '.$spacedictus[$lingua]['standby'].'<br>';
         $today += 1;
     } else {
-        $subAge += 1;
         echo yearconv($today).' : @'.$sub.'['.$subRating.'] '.$spacedictus[$lingua]['dead'].'<br>';
         $today += 1;
     }

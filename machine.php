@@ -218,7 +218,6 @@ if (self($sub,$obj)) {
             }
         }
     } else {
-        $subAge += 1;
         echo yearconv($today).' : @'.$sub.'['.$subRating.'] '.$spacedictus[$lingua]['dead'].'<br>';
         $today += 1;
     }

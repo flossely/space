@@ -1,6 +1,11 @@
 <?php
 
-$today = file_get_contents('year');
+if (file_exists('year')) {
+    $today = file_get_contents('year');
+} else {
+    $today = -2000;
+}
+
 $subRand = rand(0,$last);
 $subID = $subRand;
 $sub = $list[$subRand];
@@ -232,6 +237,8 @@ if (self($sub,$obj)) {
     }
 }
 
+file_put_contents('year', $today);
+chmod('year', 0777);
 file_put_contents($sub.'/coord', $subX.';'.$subY.';'.$subZ);
 chmod($sub.'/coord', 0777);
 file_put_contents($sub.'/rating', $subRating);

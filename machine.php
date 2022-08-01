@@ -67,12 +67,10 @@ if (valuable($subRating)) {
 if (self($sub,$obj)) {
     if (alive($subRating)) {
         $subAge += 1;
-        $objAge += 1;
         echo yearconv($today).' : @'.$sub.'['.$subRating.'] '.$spacedictus[$lingua]['standby'].'<br>';
         $today += 1;
     } else {
         $subAge += 1;
-        $objAge += 1;
         echo yearconv($today).' : @'.$sub.'['.$subRating.'] '.$spacedictus[$lingua]['dead'].'<br>';
         $today += 1;
     }
@@ -88,7 +86,6 @@ if (self($sub,$obj)) {
         	        $subZ = $objZ;
         	        $subScore += 10;
         	        $subAge += 1;
-                        $objAge += 1;
         	        echo yearconv($today).' : @'.$sub.'['.$subRating.'] '.$spacedictus[$lingua]['tract'].' ('.dist($subX,$subY,$subZ,$objX,$objY,$objZ).') @'.$obj.'['.$objRating.']<br>';
         	        $today += 1;
 	            } elseif ($subAction == 1) {
@@ -99,7 +96,6 @@ if (self($sub,$obj)) {
         	        $subRating += $subForce;
         	        $subScore += 15;
         	        $subAge += 1;
-                        $objAge += 1;
         	        echo yearconv($today).' : @'.$sub.'['.$subRating.'] '.$spacedictus[$lingua]['hit'].' @'.$obj.'['.$objRating.']<br>';
         	        $today += 1;
         	    } elseif ($subAction == 2) {
@@ -107,7 +103,6 @@ if (self($sub,$obj)) {
         	        $subRating += $subForce;
         	        $subScore += 5;
         	        $subAge += 1;
-                        $objAge += 1;
         	        echo yearconv($today).' : @'.$sub.'['.$subRating.'] '.$spacedictus[$lingua]['strike'].' @'.$obj.'['.$objRating.']<br>';
         	        $today += 1;
 	            }
@@ -119,7 +114,6 @@ if (self($sub,$obj)) {
         	        $subZ = $objZ;
         	        $subScore += 10;
         	        $subAge += 1;
-                        $objAge += 1;
         	        echo yearconv($today).' : @'.$sub.'['.$subRating.'] '.$spacedictus[$lingua]['tract'].' ('.dist($subX,$subY,$subZ,$objX,$objY,$objZ).') @'.$obj.'['.$objRating.']<br>';
         	        $today += 1;
 	            } elseif ($subAction == 1) {
@@ -130,7 +124,6 @@ if (self($sub,$obj)) {
         	        $subRating -= $subForce;
         	        $subScore += 15;
         	        $subAge += 1;
-                        $objAge += 1;
         	        echo yearconv($today).' : @'.$sub.'['.$subRating.'] '.$spacedictus[$lingua]['heal'].' @'.$obj.'['.$objRating.']<br>';
         	        $today += 1;
 	            } elseif ($subAction == 2) {
@@ -138,7 +131,6 @@ if (self($sub,$obj)) {
         	        $subRating -= $subForce;
         	        $subScore += 5;
         	        $subAge += 1;
-                        $objAge += 1;
         	        echo yearconv($today).' : @'.$sub.'['.$subRating.'] '.$spacedictus[$lingua]['heal'].' @'.$obj.'['.$objRating.']<br>';
         	        $today += 1;
 	            }
@@ -150,42 +142,36 @@ if (self($sub,$obj)) {
     	    	    $subX = $subX + $subMove;
     	    	    $subScore += 1;
     	    	    $subAge += 1;
-                    $objAge += 1;
     	    	    echo yearconv($today).' : @'.$sub.'['.$subRating.'] '.$spacedictus[$lingua]['right'].' {'.$subX.';'.$subY.';'.$subZ.'}<br>';
     	    	    $today += 1;
 		} elseif ($subDirect == 1) {
     	    	    $subX = $subX - $subMove;
     	    	    $subScore += 1;
     	    	    $subAge += 1;
-                    $objAge += 1;
     	    	    echo yearconv($today).' : @'.$sub.'['.$subRating.'] '.$spacedictus[$lingua]['left'].' {'.$subX.';'.$subY.';'.$subZ.'}<br>';
     	    	    $today += 1;
         	} elseif ($subDirect == 2) {
             	    $subY = $subY + $subMove;
             	    $subScore += 1;
             	    $subAge += 1;
-                    $objAge += 1;
             	    echo yearconv($today).' : @'.$sub.'['.$subRating.'] '.$spacedictus[$lingua]['forward'].' {'.$subX.';'.$subY.';'.$subZ.'}<br>';
             	    $today += 1;
         	} elseif ($subDirect == 3) {
             	    $subY = $subY - $subMove;
             	    $subScore += 1;
             	    $subAge += 1;
-                    $objAge += 1;
             	    echo yearconv($today).' : @'.$sub.'['.$subRating.'] '.$spacedictus[$lingua]['back'].' {'.$subX.';'.$subY.';'.$subZ.'}<br>';
             	    $today += 1;
         	} elseif ($subDirect == 4) {
             	    $subZ = $subZ + $subMove;
             	    $subScore += 1;
             	    $subAge += 1;
-                    $objAge += 1;
             	    echo yearconv($today).' : @'.$sub.'['.$subRating.'] '.$spacedictus[$lingua]['up'].' {'.$subX.';'.$subY.';'.$subZ.'}<br>';
             	    $today += 1;
 		} elseif ($subDirect == 5) {
             	    $subZ = $subZ - $subMove;
             	    $subScore += 1;
             	    $subAge += 1;
-                    $objAge += 1;
             	    echo yearconv($today).' : @'.$sub.'['.$subRating.'] '.$spacedictus[$lingua]['down'].' {'.$subX.';'.$subY.';'.$subZ.'}<br>';
             	    $today += 1;
 		}
@@ -197,49 +183,42 @@ if (self($sub,$obj)) {
     	    	$subX = $subX + $subMove;
     	    	$subScore += 1;
     	    	$subAge += 1;
-    	    	$objAge += 1;
     	    	echo yearconv($today).' : @'.$sub.'['.$subRating.'] '.$spacedictus[$lingua]['right'].' {'.$subX.';'.$subY.';'.$subZ.'}<br>';
     	    	$today += 1;
 	    } elseif ($subDirect == 1) {
     	    	$subX = $subX - $subMove;
     	    	$subScore += 1;
     	    	$subAge += 1;
-    	    	$objAge += 1;
     	    	echo yearconv($today).' : @'.$sub.'['.$subRating.'] '.$spacedictus[$lingua]['left'].' {'.$subX.';'.$subY.';'.$subZ.'}<br>';
     	    	$today += 1;
             } elseif ($subDirect == 2) {
             	$subY = $subY + $subMove;
             	$subScore += 1;
             	$subAge += 1;
-            	$objAge += 1;
             	echo yearconv($today).' : @'.$sub.'['.$subRating.'] '.$spacedictus[$lingua]['forward'].' {'.$subX.';'.$subY.';'.$subZ.'}<br>';
             	$today += 1;
             } elseif ($subDirect == 3) {
             	$subY = $subY - $subMove;
             	$subScore += 1;
             	$subAge += 1;
-            	$objAge += 1;
             	echo yearconv($today).' : @'.$sub.'['.$subRating.'] '.$spacedictus[$lingua]['back'].' {'.$subX.';'.$subY.';'.$subZ.'}<br>';
             	$today += 1;
             } elseif ($subDirect == 4) {
             	$subZ = $subZ + $subMove;
             	$subScore += 1;
             	$subAge += 1;
-            	$objAge += 1;
             	echo yearconv($today).' : @'.$sub.'['.$subRating.'] '.$spacedictus[$lingua]['up'].' {'.$subX.';'.$subY.';'.$subZ.'}<br>';
             	$today += 1;
 	    } elseif ($subDirect == 5) {
             	$subZ = $subZ - $subMove;
             	$subScore += 1;
             	$subAge += 1;
-            	$objAge += 1;
             	echo yearconv($today).' : @'.$sub.'['.$subRating.'] '.$spacedictus[$lingua]['down'].' {'.$subX.';'.$subY.';'.$subZ.'}<br>';
             	$today += 1;
             }
         }
     } else {
         $subAge += 1;
-        $objAge += 1;
         echo yearconv($today).' : @'.$sub.'['.$subRating.'] '.$spacedictus[$lingua]['dead'].'<br>';
         $today += 1;
     }

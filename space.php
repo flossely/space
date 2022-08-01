@@ -16,6 +16,18 @@ function valuable($r) {
     return ($r > 0);
 }
 
+function yearconv($year)
+{
+    if ($year >= 0) {
+        $append = 'AD';
+        $num = $year;
+    } else {
+        $append = 'BC';
+        $num = abs($year);
+    }
+    return $num . ' ' . $append;
+}
+
 function dist($ix, $iy, $iz, $jx, $jy, $jz) {
     if ($ix > $jx) {
         $dix = $ix - $jx;
